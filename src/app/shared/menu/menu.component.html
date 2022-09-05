@@ -1,0 +1,15 @@
+<mat-menu #childMenu="matMenu" [overlapTrigger]="true">
+  <span *ngFor="let hijos of treeArray">
+    <span *ngIf="hijos.hijos && hijos.hijos.length > 0">
+      <button mat-menu-item color="primary" [matMenuTriggerFor]="menu.childMenu">
+        <span>{{hijos.name}}</span>
+      </button>
+      <app-menu #menu [treeArray]="hijos.hijos"></app-menu>
+    </span>
+    <span *ngIf="!hijos.hijos || hijos.hijos.length === 0">
+      <button mat-menu-item >
+        <span>{{hijos.name}}</span>
+      </button>
+    </span>
+  </span>
+</mat-menu>
